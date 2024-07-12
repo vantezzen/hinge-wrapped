@@ -39,7 +39,7 @@ export default function RootLayout({
           />
         </noscript>
         <Script
-          data-domain="wrapped.vantezzen.io"
+          data-domain="hinge.vantezzen.io"
           src="https://a.vantezzen.io/js/script.tagged-events.js"
         />
 
