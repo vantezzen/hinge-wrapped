@@ -3,3 +3,4 @@ interface Window {
   plausible(name: string): void;
   gtag(type: "event", name: string): void;
 }
+declare module "react-gauge-chart";

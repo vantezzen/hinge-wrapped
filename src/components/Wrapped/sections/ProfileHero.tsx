@@ -16,10 +16,12 @@ function ProfileHero(props: WrappedSectionProps) {
       >
         <Image
           src={
-            props.wrapped.userData.media.find((m) => m.type === "photo")?.url
+            props.wrapped.userData.media.find((m) => m.type === "photo")?.url ??
+            "/profile.png"
           }
           width={500}
           height={500}
+          alt="Profile"
           className="w-full h-full object-cover rounded-lg"
         />
       </div>
