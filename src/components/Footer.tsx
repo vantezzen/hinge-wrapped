@@ -30,12 +30,8 @@ function Footer() {
       </div>
       <div className="text-center mb-6 text-xs">
         <MutedText>
-          TikTok is a registered trademark of Bytedance Ltd. This website is not
-          affiliated with or endorsed by TikTok or Bytedance Ltd.
-        </MutedText>
-        <MutedText>
-          Spotify is a registered trademark of Spotify AB. TrueShuffle is not
-          associated with Spotify.
+          Hinge is a registered trademark of Hinge, Inc. This website is not
+          affiliated with or endorsed by Hinge, Inc.
         </MutedText>
       </div>
     </div>

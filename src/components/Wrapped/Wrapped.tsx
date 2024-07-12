@@ -1,5 +1,6 @@
 import React from "react";
 import sections, { WrappedSectionProps } from "./sections";
+import Footer from "../Footer";
 
 function WrappedComponent(props: WrappedSectionProps) {
   return (
@@ -7,6 +8,8 @@ function WrappedComponent(props: WrappedSectionProps) {
       {sections.map((Section, index) => (
         <Section key={index} {...props} />
       ))}
+
+      <Footer />
     </div>
   );
 }

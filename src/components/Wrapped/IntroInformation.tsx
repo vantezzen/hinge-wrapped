@@ -9,6 +9,7 @@ import Footer from "../Footer";
 import Projects from "../Projects";
 import Serif from "../Serif";
 import { Badge } from "../ui/badge";
+import Creator from "../Creator";
 
 function IntroInformation({
   onContinue,
@@ -56,6 +57,8 @@ function IntroInformation({
               </Button>
             </div>
           </div>
+
+          <Creator />
 
           <FatHeading className="mt-12 mb-6 text-xl">
             Frequently Asked Questions

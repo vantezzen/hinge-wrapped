@@ -9,6 +9,9 @@ import MessageStatistic, {
 import ProfileStatistic, {
   ProfileStatisticResult,
 } from "./Statistics/ProfileStatistic";
+import RizzScoreStatistic, {
+  RizzScoreStatisticResult,
+} from "./Statistics/RizzScoreStatistic";
 import Statistic from "./Statistics/Statistic";
 import { HingeData } from "./types";
 
@@ -18,6 +21,7 @@ export type Statistics = {
   likes: LikeStatisticResult;
   profile: ProfileStatisticResult;
   messages: MessageStatisticResult;
+  rizz: RizzScoreStatisticResult;
 };
 
 // @ts-ignore
@@ -46,6 +50,7 @@ export const SAMPLE_STATISTICS: Statistics = {
     ],
     messagesWithApologies: 3,
     messagesAskingForMySpace: 0,
+    longestTimeBetweenMessages: 1000 * 60 * 60 * 24 * 3,
   },
   likes: {
     mostActiveWeekday: {
@@ -102,6 +107,9 @@ export const SAMPLE_STATISTICS: Statistics = {
       count: 5,
     },
     uniqueWords: 112,
+  },
+  rizz: {
+    score: 69,
   },
 };
 
@@ -218,7 +226,7 @@ export const SAMPLE_USER = {
     },
     profile: {
       first_name: "John Doe",
-      age: 21,
+      age: 26,
       height_centimeters: 190,
       gender: "male",
       gender_identity: "Man",
@@ -293,6 +301,7 @@ export default class Wrapped {
       likes: this.calculateStatistic(LikeStatistic),
       profile: this.calculateStatistic(ProfileStatistic),
       messages: this.calculateStatistic(MessageStatistic),
+      rizz: this.calculateStatistic(RizzScoreStatistic),
     };
   }
 

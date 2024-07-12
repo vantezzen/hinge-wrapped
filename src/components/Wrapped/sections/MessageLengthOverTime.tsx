@@ -21,8 +21,9 @@ function MessageLengthOverTime(props: WrappedSectionProps) {
   const trend = analyzeTrend(props.statistics.messages.messageLengthOverTime);
 
   return (
-    <div className="p-12 m-8 rounded-xl w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative">
+    <div className="p-12 m-8 rounded-xl w-full max-w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative">
       <hr className="w-full border-zinc-200 border-2 mb-6 rounded-full" />
+      <div style={{ height: "200px" }}></div>
 
       <h2 className="text-2xl text-center font-bold">
         {trend === Trend.Rising && (
@@ -88,6 +89,7 @@ function MessageLengthOverTime(props: WrappedSectionProps) {
           <Bar dataKey="messageLength" fill="#2563eb" radius={8} />
         </BarChart>
       </ChartContainer>
+      <div style={{ height: "200px" }}></div>
     </div>
   );
 }

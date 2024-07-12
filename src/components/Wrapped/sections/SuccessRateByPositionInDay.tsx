@@ -24,7 +24,7 @@ function SuccessRateByPositionInDay(props: WrappedSectionProps) {
   );
 
   return (
-    <div className="p-12 m-8 rounded-xl w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative">
+    <div className="p-12 m-8 rounded-xl w-full max-w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative">
       <hr className="w-full border-zinc-200 border-2 mb-6 rounded-full" />
 
       <h2 className="text-2xl text-center font-bold">

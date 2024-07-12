@@ -21,7 +21,6 @@ function WrappedContainer({
     <motion.div
       className={`min-h-screen flex justify-center items-center flex-col gap-6 ${bg} ${text} relative`}
       suppressHydrationWarning
-      layoutId="wrapped-container"
     >
       {children}
     </motion.div>

@@ -11,6 +11,8 @@ export type ChatStatisticResult = {
   messagesAskingForInstagram: number;
   messagesWithApologies: number;
   messagesAskingForMySpace: number;
+
+  longestTimeBetweenMessages: number;
 };
 
 const apologies = ["sorry", "apologize", "apology", "forgive", "forgiveness"];
@@ -90,6 +92,10 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
 
         if (lastMessageTime) {
           timeBetweenMessages.push(time - lastMessageTime);
+
+          if (result.longestTimeBetweenMessages < time - lastMessageTime) {
+            result.longestTimeBetweenMessages = time - lastMessageTime;
+          }
         } else {
           const matchTime = new Date(user.match![0].timestamp).getTime();
           timeToFirstMessage.push(time - matchTime);
@@ -134,6 +140,7 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
       ],
       messagesWithApologies: 0,
       messagesAskingForMySpace: 0,
+      longestTimeBetweenMessages: 0,
     };
   }
 }

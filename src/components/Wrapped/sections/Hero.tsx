@@ -5,6 +5,7 @@ import RetroGrid from "@/components/ui/retro-grid";
 import FatHeading from "../FatHeading";
 import InfoText from "../InfoText";
 import { ChevronDown } from "lucide-react";
+import CountUp from "../CountUp";
 
 function Hero(props: WrappedSectionProps) {
   return (
@@ -14,7 +15,7 @@ function Hero(props: WrappedSectionProps) {
         {props.wrapped.userData.user.profile.first_name}, you've been on Hinge
         for{" "}
         <span className="text-orange-600">
-          {props.statistics.profile.daysSinceSignup}
+          <CountUp end={props.statistics.profile.daysSinceSignup} />
         </span>{" "}
         days!
       </FatHeading>

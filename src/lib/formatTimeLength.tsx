@@ -1,4 +1,7 @@
 // Format seconds into a human readable format
+
+import CountUp from "@/components/Wrapped/CountUp";
+
 // e.g. 3600 => { amount: 1, unit: "hours" }
 const units = [
   { unit: "months", seconds: 60 * 60 * 24 * 30 },
@@ -37,4 +40,13 @@ export default function formatTimeLength(seconds: number): {
 export function formatTimeLengthString(seconds: number): string {
   const { amount, unit } = formatTimeLength(seconds);
   return `${amount} ${unit}`;
+}
+
+export function formatTimeLengthAnimated(seconds: number) {
+  const { amount, unit } = formatTimeLength(seconds);
+  return (
+    <>
+      <CountUp end={amount} /> {unit}
+    </>
+  );
 }

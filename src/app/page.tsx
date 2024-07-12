@@ -90,7 +90,7 @@ function HingeWrappedAppPage() {
               console.error("Exception when calculating statistics", e);
             }
 
-            setPage("ready");
+            setPage("play");
           }}
         />
       )}
@@ -199,34 +199,6 @@ function HingeWrappedAppPage() {
               the page and uploading your data export again.
             </MutedText>
           </HideForTime>
-        </WrappedContainer>
-      )}
-
-      {page === "ready" && (
-        <WrappedContainer>
-          <div className="p-12 rounded-xl bg-brand-light overflow-hidden max-w-xl mx-auto">
-            <Serif>
-              <h1 className="text-4xl md:text-5xl font-bold">
-                Your Wrapped is ready!
-              </h1>
-            </Serif>
-
-            <InfoText className="mt-6">
-              We've crunched the numbers and found some...interesting insights.
-            </InfoText>
-            <InfoText className="mt-3">Are you ready to see them?</InfoText>
-
-            <Button
-              onClick={() => {
-                setPage("play");
-                trackEvent("play");
-              }}
-              className="mt-6 w-full"
-            >
-              Show me!
-              <ArrowRight size={16} className="ml-2" />
-            </Button>
-          </div>
         </WrappedContainer>
       )}
 

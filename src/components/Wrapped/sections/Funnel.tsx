@@ -7,6 +7,7 @@ import InfoText from "../InfoText";
 import { formatTimeLengthString } from "@/lib/formatTimeLength";
 import { round } from "@/lib/utils";
 import lookup from "@/lib/lookup";
+import CountUp from "../CountUp";
 
 function Funnel(props: WrappedSectionProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -17,7 +18,7 @@ function Funnel(props: WrappedSectionProps) {
 
   return (
     <div
-      className="p-12 m-8 rounded-xl w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative"
+      className="p-12 m-8 rounded-xl w-full max-w-[80vw] mx-auto flex justify-center items-center flex-col gap-6 relative"
       ref={containerRef}
     >
       <div className="h-48"></div>
@@ -27,7 +28,7 @@ function Funnel(props: WrappedSectionProps) {
         You've liked
         <Serif>
           <div className="text-6xl text-orange-500 my-3">
-            {props.statistics.funnel.profilesLiked}
+            <CountUp end={props.statistics.funnel.profilesLiked} />
           </div>
         </Serif>
         profiles
@@ -75,7 +76,7 @@ function Funnel(props: WrappedSectionProps) {
         You've matched with
         <Serif>
           <div className="text-6xl text-emerald-500 my-3">
-            {props.statistics.funnel.matches}
+            <CountUp end={props.statistics.funnel.matches} />
           </div>
         </Serif>
         of them
@@ -139,7 +140,7 @@ function Funnel(props: WrappedSectionProps) {
         You've messaged
         <Serif>
           <div className="text-6xl text-blue-500 my-3">
-            {props.statistics.funnel.chats}
+            <CountUp end={props.statistics.funnel.chats} />
           </div>
         </Serif>
         of them
@@ -174,7 +175,7 @@ function Funnel(props: WrappedSectionProps) {
             confirmed you met
             <Serif>
               <div className="text-6xl text-violet-500 my-3">
-                {props.statistics.funnel.met}
+                <CountUp end={props.statistics.funnel.met} />
               </div>
             </Serif>
             of them
@@ -193,32 +194,39 @@ function Funnel(props: WrappedSectionProps) {
         </>
       )}
 
-      {props.statistics.funnel.blocks > 0 && (
-        <>
-          <div style={{ height: "200px" }}></div>
+      <div style={{ height: "200px" }}></div>
 
-          {/* Block */}
-          <h2 className="text-2xl text-center font-bold">
-            and got on to unmatch
-            <Serif>
-              <div className="text-6xl text-rose-500 my-3">
-                {props.statistics.funnel.blocks}
-              </div>
-            </Serif>
-            of them
-          </h2>
-          <motion.div
-            className="h-16 rounded-lg bg-rose-500 mx-auto mt-12"
-            style={{
-              width: `${
-                (props.statistics.funnel.blocks /
-                  props.statistics.funnel.profilesLiked) *
-                100
-              }%`,
-            }}
-          />
-        </>
-      )}
+      {/* Block */}
+      <h2 className="text-2xl text-center font-bold">
+        and got on to unmatch
+        <Serif>
+          <div className="text-6xl text-rose-500 my-3">
+            <CountUp end={props.statistics.funnel.blocks} />
+          </div>
+        </Serif>
+        of them
+      </h2>
+
+      <InfoText className="text-center">
+        {lookup(props.statistics.funnel.blocks, {
+          0: "You just loved everyone, huh?",
+          1: "Oh yes, there's always that one person.",
+          2: "You're not here to play games.",
+          10: "Don't like it, unmatch it - I respect that.",
+          30: "You're not here to play games, I see.",
+        })}
+      </InfoText>
+
+      <motion.div
+        className="h-16 rounded-lg bg-rose-500 mx-auto mt-12"
+        style={{
+          width: `${
+            (props.statistics.funnel.blocks /
+              props.statistics.funnel.profilesLiked) *
+            100
+          }%`,
+        }}
+      />
 
       {props.statistics.likes.mostLikesOnOneProfile.likes > 1 && (
         <>
@@ -227,7 +235,9 @@ function Funnel(props: WrappedSectionProps) {
             There was a profile which you liked
             <Serif>
               <div className="text-6xl text-rose-500 my-3">
-                {props.statistics.likes.mostLikesOnOneProfile.likes}
+                <CountUp
+                  end={props.statistics.likes.mostLikesOnOneProfile.likes}
+                />
               </div>
             </Serif>
             times.{" "}

@@ -8,6 +8,11 @@ import FirstMessage from "./FirstMessage";
 import MessageLengthOverTime from "./MessageLengthOverTime";
 import ProfileHero from "./ProfileHero";
 import Profile from "./Profile";
+import Photos from "./Photos";
+import RoundupHero from "./RoundupHero";
+import RizzScore from "./RizzScore";
+import MessagesFull from "./MessagesFull";
+import Share from "./Share";
 
 export type WrappedSectionProps = {
   statistics: Statistics;
@@ -20,10 +25,15 @@ const sections = [
   Funnel,
   SuccessRateByPositionInDay,
   MessageHero,
+  MessagesFull,
   MessageInfo,
   FirstMessage,
   MessageLengthOverTime,
   ProfileHero,
   Profile,
+  Photos,
+  RoundupHero,
+  RizzScore,
+  Share,
 ];
 export default sections;
