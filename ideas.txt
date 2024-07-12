@@ -8,7 +8,9 @@ Order:
 - Rizz score?
 
 - Time of day vs. likes
-- Apologies
 - Conversation Hibernation: Longest time between two messages
-- Number of times asked for MySpace
--
+
+- Hide irrelevant sections
+- Introduction
+- Data donation
+- Animations

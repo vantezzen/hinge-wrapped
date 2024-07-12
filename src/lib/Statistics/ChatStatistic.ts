@@ -6,9 +6,14 @@ export type ChatStatisticResult = {
   highestMessages: number;
   averageTimeBetweenMessages: number;
   averageTimeToFirstMessage: number;
-  messagesAskingForInstagram: number;
   averageChatLengthBasedOnFirstMessageTime: number[];
+
+  messagesAskingForInstagram: number;
+  messagesWithApologies: number;
+  messagesAskingForMySpace: number;
 };
+
+const apologies = ["sorry", "apologize", "apology", "forgive", "forgiveness"];
 
 export default class ChatStatistic extends Statistic<ChatStatisticResult> {
   name = "ChatStatistic";
@@ -20,6 +25,8 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
     let highestMessagesInAChat = 0;
     let timeToFirstMessage: number[] = [];
     let messagesAskingForInstagram = 0;
+    let messagesWithApologies = 0;
+    let messagesAskingForMySpace = 0;
 
     const chatLengthByFirstMessageTime: number[][] = [
       [],
@@ -69,6 +76,16 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
           messagesAskingForInstagram++;
         }
 
+        if (chat.body.toLowerCase().includes("myspace")) {
+          messagesAskingForMySpace++;
+        }
+
+        if (
+          apologies.some((apology) => chat.body.toLowerCase().includes(apology))
+        ) {
+          messagesWithApologies++;
+        }
+
         const time = new Date(chat.timestamp).getTime();
 
         if (lastMessageTime) {
@@ -98,6 +115,8 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
         }
         return chatLengths.reduce((a, b) => a + b, 0) / chatLengths.length;
       });
+    result.messagesWithApologies = messagesWithApologies;
+    result.messagesAskingForMySpace = messagesAskingForMySpace;
 
     return result;
   }
@@ -113,6 +132,8 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
       averageChatLengthBasedOnFirstMessageTime: [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       ],
+      messagesWithApologies: 0,
+      messagesAskingForMySpace: 0,
     };
   }
 }

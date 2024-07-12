@@ -1,7 +1,6 @@
 "use client";
 import Wrapped from "@/lib/Wrapped";
 import React from "react";
-import dynamic from "next/dynamic";
 import FileUpload from "@/components/Preparation/FileUpload";
 import WrappedCreator from "@/lib/WrappedCreator";
 import WrappedContainer from "@/components/Wrapped/WrappedContainer";
@@ -20,7 +19,7 @@ import Serif from "@/components/Serif";
 import WrappedComponent from "@/components/Wrapped/Wrapped";
 dayjs.extend(localizedFormat);
 
-function TikTokWrappedAppPage() {
+function HingeWrappedAppPage() {
   const [page, setPageRaw] = React.useState("intro");
   const setPage = (page: string) => {
     setPageRaw(page);
@@ -155,14 +154,14 @@ function TikTokWrappedAppPage() {
             </Serif>
 
             <InfoText className="mt-6">
-              You can view a demo of Wrapped for TikTok with sample data if you
+              You can view a demo of Wrapped for Hinge with sample data if you
               want to.
             </InfoText>
             <InfoText className="mt-3">
               <strong>
                 This is NOT your Wrapped, but a demo of what it could look like.
                 <br />
-                It does not use your TikTok data export.
+                It does not use your Hinge data export.
               </strong>
             </InfoText>
 
@@ -243,10 +242,10 @@ function TikTokWrappedAppPage() {
         <div className="fixed bottom-12 left-12 right-12 z-0 opacity-60 text-zinc-500 break-words">
           <h2 className="text-2xl md:text-4xl font-bold">Demo Mode</h2>
           <p className="text-sm">
-            This is a demo of Wrapped for TikTok. It does not use your real
-            TikTok data.
+            This is a demo of Wrapped for Hinge. It does not use your real
+            Hinge data.
             <br />
-            To see your own Wrapped, reload the page and upload your TikTok
+            To see your own Wrapped, reload the page and upload your Hinge
             data.
           </p>
         </div>
@@ -255,4 +254,4 @@ function TikTokWrappedAppPage() {
   );
 }
 
-export default TikTokWrappedAppPage;
+export default HingeWrappedAppPage;

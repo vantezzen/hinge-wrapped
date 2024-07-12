@@ -1,11 +1,8 @@
 import React from "react";
-import WrappedContainer from "../WrappedContainer";
 import { WrappedSectionProps } from ".";
 import SlideContainer from "../SlideContainer";
-import RetroGrid from "@/components/ui/retro-grid";
 import FatHeading from "../FatHeading";
 import InfoText from "../InfoText";
-import { ChevronDown } from "lucide-react";
 
 function FirstMessage(props: WrappedSectionProps) {
   if (!props.statistics.messages.mostUsedFirstMessage) return null;

@@ -1,16 +1,15 @@
 import React from "react";
-import FatHeading from "../FatHeading";
-import SlideContainer from "../SlideContainer";
 import { WrappedSectionProps } from ".";
-import { BorderBeam } from "@/components/ui/border-beam";
-import InfoText from "../InfoText";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import {
+  Book,
   Clock,
+  Frown,
   MessageCircle,
   MessageCircleHeart,
   MessagesSquare,
   Timer,
+  WashingMachine,
 } from "lucide-react";
 import { round } from "@/lib/utils";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
@@ -64,6 +63,15 @@ function MessageInfo(props: WrappedSectionProps) {
           })}
         />
         <BentoCard
+          name={String(round(props.statistics.chat.messagesAskingForMySpace))}
+          description="messages asking for MySpace"
+          Icon={() => <WashingMachine />}
+          comment={lookup(props.statistics.chat.messagesAskingForMySpace, {
+            0: "Phew, we just had to make sure.",
+            1: "2003 called, they want their social network back.",
+          })}
+        />
+        <BentoCard
           name={formatTimeLengthString(
             props.statistics.chat.averageTimeToFirstMessage / 1000
           )}
@@ -103,7 +111,7 @@ function MessageInfo(props: WrappedSectionProps) {
         <BentoCard
           name={props.statistics.messages.uniqueWords}
           description="unique words used"
-          Icon={() => null}
+          Icon={() => <Book />}
           comment={lookup(props.statistics.messages.uniqueWords, {
             0: "Not a talker I see.",
             10: "You know some sentences are loonger than that",
@@ -111,6 +119,17 @@ function MessageInfo(props: WrappedSectionProps) {
             80: "Sticking to the basics, I see.",
             100: "Given you're on a dating app, that's probably average.",
             150: "On a dating app, that's probably Shapespeare level.",
+          })}
+        />
+        <BentoCard
+          name={props.statistics.chat.messagesWithApologies}
+          description="apologies in messages"
+          Icon={() => <Frown />}
+          comment={lookup(props.statistics.chat.messagesWithApologies, {
+            0: "Ok there Mr. Perfect",
+            1: "You did something wrong and apologized, I respect that.",
+            3: "You're a bit of a troublemaker, aren't you?",
+            10: "Are you canadian or just really bad at this?",
           })}
         />
       </BentoGrid>

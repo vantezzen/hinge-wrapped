@@ -6,6 +6,8 @@ import MessageHero from "./MessageHero";
 import MessageInfo from "./MessageInfo";
 import FirstMessage from "./FirstMessage";
 import MessageLengthOverTime from "./MessageLengthOverTime";
+import ProfileHero from "./ProfileHero";
+import Profile from "./Profile";
 
 export type WrappedSectionProps = {
   statistics: Statistics;
@@ -21,5 +23,7 @@ const sections = [
   MessageInfo,
   FirstMessage,
   MessageLengthOverTime,
+  ProfileHero,
+  Profile,
 ];
 export default sections;

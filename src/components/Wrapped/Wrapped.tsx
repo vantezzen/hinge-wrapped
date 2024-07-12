@@ -1,6 +1,5 @@
 import React from "react";
 import sections, { WrappedSectionProps } from "./sections";
-import Hero from "./sections/Hero";
 
 function WrappedComponent(props: WrappedSectionProps) {
   return (

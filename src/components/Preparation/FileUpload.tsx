@@ -14,12 +14,12 @@ function FileUpload({ onFileSelect }: { onFileSelect: (file: File) => void }) {
       <div className="p-12 rounded-xl bg-brand-dark overflow-hidden max-w-xl mx-auto">
         <Serif>
           <h1 className="text-4xl md:text-5xl font-bold">
-            Select your TikTok data to get started
+            Select your Hinge data to get started
           </h1>
         </Serif>
 
         <InfoText className="mt-6">
-          Wrapped for TikTok needs your TikTok data to generate your statistics.
+          Wrapped for Hinge needs your Hinge data to generate your statistics.
         </InfoText>
         <InfoText className="mt-3">
           Your data will not be uploaded to any server, all statistics are

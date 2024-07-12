@@ -44,6 +44,8 @@ export const SAMPLE_STATISTICS: Statistics = {
       2.5, 0, 0, 1, 0, 0, 3, 0, 2, 6.666666666666667, 3, 1, 2.3333333333333335,
       3.6, 11, 1.6666666666666667, 1.75, 2, 3, 2, 6.75, 7, 1, 0,
     ],
+    messagesWithApologies: 3,
+    messagesAskingForMySpace: 0,
   },
   likes: {
     mostActiveWeekday: {
@@ -66,6 +68,21 @@ export const SAMPLE_STATISTICS: Statistics = {
     images: 16,
     prompts: 5,
     daysSinceSignup: 479,
+    mostEditedPrompt: {
+      prompt: "Teach me something about",
+      timesEdited: 5,
+    },
+    numberOfDealbreakers: 1,
+    ageRange: {
+      yearsYounger: 6,
+      youngCreep: true,
+      youngCreepBorder: 20,
+
+      yearsOlder: 1,
+      oldCreep: false,
+      oldCreepBorder: 28,
+    },
+    preferenceOutsideEthnicity: "Hispanic/Latino",
   },
   messages: {
     avgMessageLength: 83.82231404958678,
@@ -89,20 +106,76 @@ export const SAMPLE_STATISTICS: Statistics = {
 };
 
 export const SAMPLE_USER = {
-  matches: [],
-  media: [],
+  matches: [
+    {
+      chats: [
+        {
+          body: "Hey, how are you?",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "So uhh where my hug at?",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "Without me? 🥺",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "I'm not mad, just disappointed.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "Did it hurt? When you fell from the Battle Bus?",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "I'm not a photographer, but I can picture us together.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "You must be a parking ticket, because you've got FINE written all over you.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "Are you a magician? Because whenever I look at you, everyone else disappears.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "Do you have a map? I keep getting lost in your eyes.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "If you were a vegetable, you'd be a cute-cumber.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+        {
+          body: "If you were a fruit, you'd be a fineapple.",
+          timestamp: "2024-03-20 00:00:00.000",
+        },
+      ],
+    },
+  ],
+  media: [
+    {
+      type: "photo",
+      url: "/profile.jpg",
+      prompt: "As seen on my Mom’s fridge",
+      from_social_media: false,
+    },
+  ],
   prompts: [],
   user: {
     preferences: {
       distance_miles_max: 18,
-      age_min: 19,
+      age_min: 18,
       age_max: 24,
       age_dealbreaker: true,
       height_min: 92,
       height_max: 214,
       height_dealbreaker: false,
       gender_preference: "Women",
-      ethnicity_preference: '["Open to All"]',
+      ethnicity_preference: '["Hispanic/Latino"]',
       ethnicity_dealbreaker: false,
       religion_preference: '["Open to All"]',
       religion_dealbreaker: false,
@@ -150,7 +223,7 @@ export const SAMPLE_USER = {
       gender: "male",
       gender_identity: "Man",
       gender_identity_displayed: true,
-      ethnicities: "[]",
+      ethnicities: '["Pacific Islander"]',
       ethnicities_displayed: false,
       religions: "[]",
       religions_displayed: true,

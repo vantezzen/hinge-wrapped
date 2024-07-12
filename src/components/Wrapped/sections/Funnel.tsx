@@ -1,8 +1,6 @@
 import React from "react";
-import WrappedContainer from "../WrappedContainer";
 import { WrappedSectionProps } from ".";
-import SlideContainer from "../SlideContainer";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import Serif from "@/components/Serif";
 import Trapezoid from "../Trapezoid";
 import InfoText from "../InfoText";
@@ -70,7 +68,7 @@ function Funnel(props: WrappedSectionProps) {
         containerRef={containerRef}
         color="#f6ad55"
       />
-      <div style={{ height: "20vh" }}></div>
+      <div style={{ height: "200px" }}></div>
 
       {/* Matches */}
       <h2 className="text-2xl text-center font-bold">
@@ -96,23 +94,26 @@ function Funnel(props: WrappedSectionProps) {
         , leaving a comment on <b>{props.statistics.likes.likesWithComment}</b>{" "}
         profiles.
       </InfoText>
-      <InfoText className="">
-        When liking without a comment, you matched with{" "}
-        <b>
-          {round(props.statistics.funnel.successRate.withoutComment * 100, 2)}%
-        </b>
-        , and with a comment, you matched with{" "}
-        <b>
-          {round(props.statistics.funnel.successRate.withComment * 100, 2)}%
-        </b>
-        .<br />
-        {props.statistics.funnel.successRate.withComment >
-        props.statistics.funnel.successRate.withoutComment ? (
-          <>So continue leaving comments! You're funny and charming.</>
-        ) : (
-          <>So you know... maybe let your pictures do the talking.</>
-        )}
-      </InfoText>
+      {props.statistics.likes.likesWithComment > 0 && (
+        <InfoText className="">
+          When liking without a comment, you matched with{" "}
+          <b>
+            {round(props.statistics.funnel.successRate.withoutComment * 100, 2)}
+            %
+          </b>
+          , and with a comment, you matched with{" "}
+          <b>
+            {round(props.statistics.funnel.successRate.withComment * 100, 2)}%
+          </b>
+          .<br />
+          {props.statistics.funnel.successRate.withComment >
+          props.statistics.funnel.successRate.withoutComment ? (
+            <>So continue leaving comments! You're funny and charming.</>
+          ) : (
+            <>So you know... maybe let your pictures do the talking.</>
+          )}
+        </InfoText>
+      )}
 
       <motion.div
         className="h-16 rounded-lg bg-emerald-500 mx-auto mt-12"
@@ -131,7 +132,7 @@ function Funnel(props: WrappedSectionProps) {
         containerRef={containerRef}
         color="#68d391"
       />
-      <div style={{ height: "20vh" }}></div>
+      <div style={{ height: "200px" }}></div>
 
       {/* Messages */}
       <h2 className="text-2xl text-center font-bold">
@@ -158,62 +159,70 @@ function Funnel(props: WrappedSectionProps) {
         ref={messageRef}
       />
 
-      <Trapezoid
-        topRef={messageRef}
-        bottomRef={metRef}
-        containerRef={containerRef}
-        color="#4299e1"
-      />
-      <div style={{ height: "20vh" }}></div>
+      {props.statistics.funnel.met && (
+        <>
+          <Trapezoid
+            topRef={messageRef}
+            bottomRef={metRef}
+            containerRef={containerRef}
+            color="#4299e1"
+          />
+          <div style={{ height: "200px" }}></div>
 
-      {/* Met */}
-      <h2 className="text-2xl text-center font-bold">
-        confirmed you met
-        <Serif>
-          <div className="text-6xl text-violet-500 my-3">
-            {props.statistics.funnel.met}
-          </div>
-        </Serif>
-        of them
-      </h2>
-      <motion.div
-        className="h-16 rounded-lg bg-violet-500 mx-auto mt-12"
-        style={{
-          width: `${
-            (props.statistics.funnel.met /
-              props.statistics.funnel.profilesLiked) *
-            100
-          }%`,
-        }}
-        ref={metRef}
-      />
+          {/* Met */}
+          <h2 className="text-2xl text-center font-bold">
+            confirmed you met
+            <Serif>
+              <div className="text-6xl text-violet-500 my-3">
+                {props.statistics.funnel.met}
+              </div>
+            </Serif>
+            of them
+          </h2>
+          <motion.div
+            className="h-16 rounded-lg bg-violet-500 mx-auto mt-12"
+            style={{
+              width: `${
+                (props.statistics.funnel.met /
+                  props.statistics.funnel.profilesLiked) *
+                100
+              }%`,
+            }}
+            ref={metRef}
+          />
+        </>
+      )}
 
-      <div style={{ height: "20vh" }}></div>
+      {props.statistics.funnel.blocks > 0 && (
+        <>
+          <div style={{ height: "200px" }}></div>
 
-      {/* Block */}
-      <h2 className="text-2xl text-center font-bold">
-        and got on to unmatch
-        <Serif>
-          <div className="text-6xl text-rose-500 my-3">
-            {props.statistics.funnel.blocks}
-          </div>
-        </Serif>
-        of them
-      </h2>
-      <motion.div
-        className="h-16 rounded-lg bg-rose-500 mx-auto mt-12"
-        style={{
-          width: `${
-            (props.statistics.funnel.blocks /
-              props.statistics.funnel.profilesLiked) *
-            100
-          }%`,
-        }}
-      />
+          {/* Block */}
+          <h2 className="text-2xl text-center font-bold">
+            and got on to unmatch
+            <Serif>
+              <div className="text-6xl text-rose-500 my-3">
+                {props.statistics.funnel.blocks}
+              </div>
+            </Serif>
+            of them
+          </h2>
+          <motion.div
+            className="h-16 rounded-lg bg-rose-500 mx-auto mt-12"
+            style={{
+              width: `${
+                (props.statistics.funnel.blocks /
+                  props.statistics.funnel.profilesLiked) *
+                100
+              }%`,
+            }}
+          />
+        </>
+      )}
 
       {props.statistics.likes.mostLikesOnOneProfile.likes > 1 && (
         <>
-          <div style={{ height: "20vh" }}></div>
+          <div style={{ height: "200px" }}></div>
           <h2 className="text-2xl text-center font-bold">
             There was a profile which you liked
             <Serif>

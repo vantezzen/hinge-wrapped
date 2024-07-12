@@ -1,5 +1,4 @@
 import React from "react";
-import WrappedContainer from "../WrappedContainer";
 import { WrappedSectionProps } from ".";
 import SlideContainer from "../SlideContainer";
 import RetroGrid from "@/components/ui/retro-grid";

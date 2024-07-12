@@ -2,13 +2,12 @@ import React from "react";
 import { WrappedSectionProps } from ".";
 
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
-import { analyzeTrend, ordinal, round, Trend } from "@/lib/utils";
+import { analyzeTrend, Trend } from "@/lib/utils";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import Serif from "@/components/Serif";
 import InfoText from "../InfoText";
 
 function MessageLengthOverTime(props: WrappedSectionProps) {
