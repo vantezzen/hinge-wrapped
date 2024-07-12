@@ -7,6 +7,7 @@ export type ChatStatisticResult = {
   averageTimeBetweenMessages: number;
   averageTimeToFirstMessage: number;
   messagesAskingForInstagram: number;
+  averageChatLengthBasedOnFirstMessageTime: number[];
 };
 
 export default class ChatStatistic extends Statistic<ChatStatisticResult> {
@@ -20,6 +21,33 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
     let timeToFirstMessage: number[] = [];
     let messagesAskingForInstagram = 0;
 
+    const chatLengthByFirstMessageTime: number[][] = [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ];
+
     for (const user of this.wrapped.userData.matches) {
       if (!user.chats) {
         continue;
@@ -31,6 +59,10 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
         user.chats.length
       );
 
+      if (user.chats.length > 0) {
+        const firstMessageHour = new Date(user.chats[0].timestamp).getHours();
+        chatLengthByFirstMessageTime[firstMessageHour].push(user.chats.length);
+      }
       let lastMessageTime: number | null = null;
       for (const chat of user.chats) {
         if (chat.body.toLowerCase().includes("insta")) {
@@ -58,6 +90,14 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
       timeBetweenMessages.length;
     result.averageTimeToFirstMessage =
       timeToFirstMessage.reduce((a, b) => a + b, 0) / timeToFirstMessage.length;
+    result.messagesAskingForInstagram = messagesAskingForInstagram;
+    result.averageChatLengthBasedOnFirstMessageTime =
+      chatLengthByFirstMessageTime.map((chatLengths) => {
+        if (chatLengths.length === 0) {
+          return 0;
+        }
+        return chatLengths.reduce((a, b) => a + b, 0) / chatLengths.length;
+      });
 
     return result;
   }
@@ -70,6 +110,9 @@ export default class ChatStatistic extends Statistic<ChatStatisticResult> {
       averageTimeToFirstMessage: 0,
       totalMessages: 0,
       messagesAskingForInstagram: 0,
+      averageChatLengthBasedOnFirstMessageTime: [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      ],
     };
   }
 }

@@ -114,12 +114,12 @@ const InstallSchema = z.object({
   ip_address: z.string().ip(),
   idfv: z.string(),
   user_agent: z.string(),
-  install_time: z.string().datetime(),
+  install_time: TimestampSchema,
 });
 
 const AccountSchema = z.object({
-  signup_time: z.string().datetime(),
-  last_seen: z.string().datetime(),
+  signup_time: TimestampSchema,
+  last_seen: TimestampSchema,
   device_platform: z.string().optional(),
   device_os: z.string().optional(),
   device_model: z.string().optional(),

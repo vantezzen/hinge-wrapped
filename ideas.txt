@@ -1,15 +1,14 @@
-- Likes -> Matches -> Chats -> We met
-- Average messages sent/Max messages send
-- Amount of times you send "insta"/"instagram"
-- Average time between messages
-- Amount blocked
+Order:
 
-- Amount images/prompts over time
-- Days since signup
-- Most amount of likes on one profile
+- So how about that profile?
+  - Number of images and prompts
+  - Numer of times a prompt was edited
+  - Number of deal breakers
 
-- How much time spent liking profiles
+- Rizz score?
 
-
-- It's been 192 days since you signed up - let's see what you've been up to
-- You've sent 923 likes, 
+- Time of day vs. likes
+- Apologies
+- Conversation Hibernation: Longest time between two messages
+- Number of times asked for MySpace
+-

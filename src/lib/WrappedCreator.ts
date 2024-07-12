@@ -1,4 +1,4 @@
-import Wrapped from "./Wrapped";
+import Wrapped, { SAMPLE_USER } from "./Wrapped";
 import JSZip from "jszip";
 import { HingeData, HingeDataSchema } from "./types";
 
@@ -9,10 +9,10 @@ export default class WrappedCreator {
       await zip.loadAsync(file);
 
       const userData: HingeData = {
-        matches: await this.loadFile(zip, "matches.json"),
-        media: await this.loadFile(zip, "media.json"),
-        prompts: await this.loadFile(zip, "prompts.json"),
-        user: await this.loadFile(zip, "user.json", {}),
+        matches: await this.loadFile(zip, "export/matches.json"),
+        media: await this.loadFile(zip, "export/media.json"),
+        prompts: await this.loadFile(zip, "export/prompts.json"),
+        user: await this.loadFile(zip, "export/user.json", {}),
       };
 
       this.investigateSchema(userData);
@@ -29,6 +29,7 @@ export default class WrappedCreator {
     fileName: string,
     defaultValue: any = []
   ): Promise<any> {
+    console.log(`Loading ${fileName}`, zip.files);
     const file = zip.files[fileName];
     if (!file) {
       console.error(`File ${fileName} not found in ZIP`);
@@ -40,7 +41,7 @@ export default class WrappedCreator {
   }
 
   forDemoMode(): Wrapped {
-    const wrapped = new Wrapped({} as any);
+    const wrapped = new Wrapped(SAMPLE_USER);
     wrapped.demoMode = true;
     return wrapped;
   }
