@@ -1,0 +1,15 @@
+- Likes -> Matches -> Chats -> We met
+- Average messages sent/Max messages send
+- Amount of times you send "insta"/"instagram"
+- Average time between messages
+- Amount blocked
+
+- Amount images/prompts over time
+- Days since signup
+- Most amount of likes on one profile
+
+- How much time spent liking profiles
+
+
+- It's been 192 days since you signed up - let's see what you've been up to
+- You've sent 923 likes, 
