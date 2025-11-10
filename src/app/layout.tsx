@@ -42,13 +42,6 @@ export default function RootLayout({
           data-domain="hinge.vantezzen.io"
           src="https://a.vantezzen.io/js/script.tagged-events.js"
         />
-
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8508732166185621"
-          crossOrigin="anonymous"
-        ></Script>
-
         <script dangerouslySetInnerHTML={{ __html: PLAUSIBLE_EVENTS }}></script>
       </body>
     </html>
